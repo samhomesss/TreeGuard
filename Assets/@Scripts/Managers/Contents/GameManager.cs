@@ -47,6 +47,15 @@ public class GameManager
     public event Action<Vector2> OnMoveDirChanged;
     public event Action<bool> OnAttackActionEvent;
     public event Action<Define.EInputSystemState> OnInputSystemStateChanged;
+
+    //UI
+    public event Action OnUISkillTreeCanvasEvent; // 스킬트리 UI 키는거 
+
+    public void UISkillTreeCanvas()
+    {
+        OnUISkillTreeCanvasEvent?.Invoke();
+    }
+
     #endregion
 
     public void DisConnect()
