@@ -1,8 +1,11 @@
 using UnityEngine;
 using static Define;
+
 public class Hero : Creature
 {
     Vector2 _moveDir = Vector2.zero;
+    bool _isAttack = false;
+
 
     public override bool Init()
     {
@@ -18,6 +21,8 @@ public class Hero : Creature
         #region Actions
         Managers.Game.OnMoveDirChanged -= HandleOnMoveDirChanged;
         Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged;
+        Managers.Game.OnAttackActionEvent -= HandleOnAttackChanged;
+        Managers.Game.OnAttackActionEvent += HandleOnAttackChanged;
         Managers.Game.OnInputSystemStateChanged -= HandleOnInputSystemStateChanged;
         Managers.Game.OnInputSystemStateChanged += HandleOnInputSystemStateChanged;
         #endregion
@@ -27,12 +32,37 @@ public class Hero : Creature
 
     private void Update()
     {
+        HeroMove();
+        HeroAttack();
+    }
+
+    void HeroMove()
+    {
         transform.TranslateEx(_moveDir * Time.deltaTime * Speed);
     }
+
+    void HeroAttack()
+    {
+        if (_isAttack)
+        {
+            // TODO : 여기에 어택 구현 
+            {
+
+            }
+            _isAttack = !_isAttack;
+        }
+    }
+
+    #region Handler
 
     private void HandleOnMoveDirChanged(Vector2 dir)
     {
         _moveDir = dir;
+    }
+
+    private void HandleOnAttackChanged(bool isattack)
+    {
+        _isAttack = isattack;
     }
 
     private void HandleOnInputSystemStateChanged(EInputSystemState inputSystemState)
@@ -50,4 +80,6 @@ public class Hero : Creature
                 break;
         }
     }
+
+    #endregion
 }
