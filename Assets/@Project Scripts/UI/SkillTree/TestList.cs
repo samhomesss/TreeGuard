@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class TestList : MonoBehaviour
 {
-    public List<BranchData> branch;
+    public List<SkillData> branch;
+
+    float DamageTest = 0;
+
 
     private void Start()
     {
@@ -13,14 +16,26 @@ public class TestList : MonoBehaviour
     void BranchDataGet(BranchData branchData)
     {
         branch.Clear();
-        branch.Add(branchData);
+        foreach (var item in branchData.branchSkill)
+        {
+            branch.Add(item);
+        }
 
         foreach (var item in branchData.childrenBranch)
         {
             if (item != null && item.isOpen)
             {
-                branch.Add(item);
+                foreach (var items in item.branchSkill)
+                {
+                    branch.Add(items);
+                }
             }
         }
+
+        foreach (var item in branch)
+        {
+            DamageTest += item.Damage;
+        }
+        Debug.Log(DamageTest);
     }
 }
