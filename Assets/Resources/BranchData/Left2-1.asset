@@ -15,5 +15,6 @@ MonoBehaviour:
   branchID: 9
   parentBranch: {fileID: 11400000, guid: b6bd56a29d45dac4984b9055f7c94c13, type: 2}
   childrenBranch: []
-  branchSkill: []
+  branchSkill:
+  - {fileID: 11400000, guid: 3e94e5f16f66ce2439a6ba0ef812bf0e, type: 2}
   isOpen: 1
