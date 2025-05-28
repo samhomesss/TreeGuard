@@ -16,7 +16,6 @@ public class SkillTreeBranch : UI_Scene
 
         _branchButton = GetComponent<Button>();
         _canvas = GetComponentInParent<Canvas>();
-        _branchData = TreeDataBase.BranchData[treeID];
 
         if (_branchButton == null)
         {
@@ -30,9 +29,15 @@ public class SkillTreeBranch : UI_Scene
             return false;
         }
 
+        return true;
+    }
+
+    private void Start()
+    {
+        _branchData = TreeDataBase.BranchData[treeID];
+
         _branchButton.onClick.AddListener(OnBranchClick);
         Managers.Game.OnSKillTreeCutBranchEvent += BranchCut;
-        return true;
     }
 
     private void OnBranchClick()

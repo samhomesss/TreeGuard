@@ -15,5 +15,10 @@ MonoBehaviour:
   branchID: 3
   parentBranch: {fileID: 11400000, guid: 46fa7467287cb464d96acf4065ddf62d, type: 2}
   childrenBranch: []
-  branchSkill: []
-  isOpen: 1
+  branchSkill:
+  - {fileID: 11400000, guid: 6f6cd65ef161dce46ab33ba758d3ec63, type: 2}
+  - {fileID: 11400000, guid: c12d97e9220897f40b8c8dc1ed9c7649, type: 2}
+  - {fileID: 11400000, guid: ac02e230a3d9251488aa90de6c0152a9, type: 2}
+  - {fileID: 11400000, guid: a5e67aa2a098f1849b38675d08dede94, type: 2}
+  - {fileID: 11400000, guid: e6c16b73631e83c4491ae347f5db11fe, type: 2}
+  isOpen: 0
