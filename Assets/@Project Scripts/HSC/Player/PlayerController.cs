@@ -4,9 +4,6 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }
 
-    // 현재 장착한 무기 todo : 얘 직접 쓸게 아니라 Weapon클래스가 가져와서 이것저것 로직 처리 해주게 변경예정
-    public WeaponData currentWeapon;
-
     PlayerAttack playerAttack;
     PlayerDash playerDash;
     PlayerMove playerMove;

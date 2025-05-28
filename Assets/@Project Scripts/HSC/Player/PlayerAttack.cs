@@ -5,7 +5,7 @@ public class PlayerAttack : MonoBehaviour
 {
     Rigidbody2D rb;
     Vector2 attackPushForceDir;
-    WeaponData currentWeapon;
+    SkiillEquipPlayer currentWeapon;
     PlayerAnimationEventController playerAnimationEventController;
 
     [SerializeField] private float attackPushForce = 7f; // 공격 반동 힘
@@ -15,8 +15,7 @@ public class PlayerAttack : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerAnimationEventController = GetComponent<PlayerAnimationEventController>();
-        currentWeapon = PlayerController.Instance.currentWeapon;
-        currentWeapon.Init(); // 무기 데이터 초기화
+        currentWeapon = GetComponent<SkiillEquipPlayer>();
     }
 
     void Update()
@@ -35,8 +34,6 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !PlayerController.Instance.isAttack)
         {
-            // 나중에 장비교체시로 이동될 코드 한줄
-            currentWeapon = PlayerController.Instance.currentWeapon;
             // 여기 들어가는 시간은 어택 애니메이션 실행시간. 일단 임시로 0.2f로 설정.
             // 추가로직으로 공격속도 값이 애니메이션 실행시간을 조절하는 코드 필요.
             StartCoroutine(ControlAttackCoroutine(0.1f));
@@ -44,7 +41,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         //우클릭
-        if (Input.GetMouseButtonDown(1) && !PlayerController.Instance.isAttack && currentWeapon.canSpecial)
+        if (Input.GetMouseButtonDown(1) && !PlayerController.Instance.isAttack && currentWeapon.CanSpecialAttack)
         {
             StartCoroutine(ControlSpecialAttackCoroutine(0.2f));
             Debug.Log("우클릭으로 스킬 사용");
@@ -82,14 +79,14 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack(float time)
     {
-        // 스킬마다 애니메이션, 연출 실행
-        if (currentWeapon != null && currentWeapon.skills.Length > 0)
-        {
-            foreach (var skill in currentWeapon.skills)
-            {
+        //// 스킬마다 애니메이션, 연출 실행
+        //if (currentWeapon != null && currentWeapon.skills.Length > 0)
+        //{
+        //    foreach (var skill in currentWeapon.skills)
+        //    {
                 
-            }
-        }
+        //    }
+        //}
 
         // 공격 반동 (앞으로 쏠리는 반동 말하는거임)
         attackPushForceDir = PlayerController.Instance.moveDir;
