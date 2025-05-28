@@ -69,5 +69,17 @@ public class PlayerController : MonoBehaviour
         mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         mouseWorldPos.z = 0; // 2D 게임이므로 z축은 0으로 설정
         lookDir = (mouseWorldPos - transform.position).normalized;
+
+        // filp
+        if (lookDir.x < 0)
+        {
+            // 왼쪽을 바라보는 경우
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            // 오른쪽을 바라보는 경우
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 }
