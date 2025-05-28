@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skills: []
   readyDuration: 0.2
-  attackPushForce: 5
+  specialReadyDuration: 0.3
+  canSpecial: 1

@@ -49,14 +49,13 @@ public class PlayerController : MonoBehaviour
     {
         if (isDash)
         {
-            if(isAttack)
-            {
-                //todo : 대쉬 공격
-            }
-            else
-            {
-                playerDash.Dash(moveDir);
-            }
+            //if(isAttack)
+            //{
+            //    //todo : 대쉬 공격
+            //    return;
+            //}
+            
+            playerDash.Dash(moveDir);
         }
         else if(!isAttack)
         {
