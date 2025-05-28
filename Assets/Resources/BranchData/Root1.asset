@@ -16,4 +16,4 @@ MonoBehaviour:
   parentBranch: {fileID: 0}
   childrenBranch: []
   branchSkill: []
-  isOpen: 0
+  isOpen: 1

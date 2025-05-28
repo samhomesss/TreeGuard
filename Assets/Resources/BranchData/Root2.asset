@@ -27,5 +27,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0bfb465368cf88b4b88ec543a38d0f91, type: 2}
   - {fileID: 11400000, guid: 46fa7467287cb464d96acf4065ddf62d, type: 2}
   - {fileID: 11400000, guid: 98caeab1831e3f148aea6248b23e1090, type: 2}
+  - {fileID: 11400000, guid: 9f087413f8ad873429a29817bc11647e, type: 2}
+  - {fileID: 11400000, guid: f9eadb29efa16f742a85dc455180da66, type: 2}
   branchSkill: []
-  isOpen: 0
+  isOpen: 1

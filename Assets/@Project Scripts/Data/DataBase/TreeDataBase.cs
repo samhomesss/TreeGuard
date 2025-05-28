@@ -4,14 +4,14 @@ using UnityEngine;
 public class TreeDataBase : MonoBehaviour
 {
     public static Dictionary<int, BranchData> BranchData => _branchData;
-    static Dictionary<int, BranchData> _branchData = new Dictionary<int, BranchData>();
+    private static Dictionary<int, BranchData> _branchData = new Dictionary<int, BranchData>();
 
     private void Awake()
     {
-        AddData(0 , "Root1");
-        AddData(1 , "Root2");
-        AddData(2 , "Root3");
-        AddData(3 , "Root4");
+        AddData(0, "Root1");
+        AddData(1, "Root2");
+        AddData(2, "Root3");
+        AddData(3, "Root4");
         AddData(4, "Left1");
         AddData(5, "Left1-1");
         AddData(6, "Right1");
@@ -25,21 +25,37 @@ public class TreeDataBase : MonoBehaviour
         AddData(14, "Left1-2");
         AddData(15, "Right1-2");
 
-        foreach (var item in _branchData)
-        {
-            Debug.Log(item.Key + "" + item.Value);
-        }
+        // 테스트 시 모든 BranchData의 isOpen을 true로 초기화
+#if UNITY_EDITOR
+        InitializeBranchDataForTesting();
+#endif
     }
 
-    void AddData(int key, string path)
+    private void AddData(int key, string path)
     {
         if (!_branchData.ContainsKey(key))
         {
-            _branchData.Add(key, Resources.Load<BranchData>($"BranchData/{path}"));
+            BranchData data = Resources.Load<BranchData>($"BranchData/{path}");
+            if (data != null)
+            {
+                _branchData.Add(key, data);
+            }
+            else
+            {
+                Debug.LogError($"Failed to load BranchData at path: BranchData/{path}");
+            }
         }
-        else
+    }
+
+    private void InitializeBranchDataForTesting()
+    {
+        foreach (var item in _branchData)
         {
-            return;
+            if (item.Value != null)
+            {
+                item.Value.isOpen = true;
+                Debug.Log($"Set isOpen to true for BranchData ID: {item.Key}");
+            }
         }
     }
 }

@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   branchID: 9
   parentBranch: {fileID: 11400000, guid: b6bd56a29d45dac4984b9055f7c94c13, type: 2}
-  childrenBranch:
-  - {fileID: 11400000, guid: 8935cac0ad304734092ce5c76606e297, type: 2}
+  childrenBranch: []
   branchSkill: []
-  isOpen: 0
+  isOpen: 1
