@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Skill 6
   m_EditorClassIdentifier: 
   SkillID: 6
-  Fire: 0
+  Fire: 1
   Ice: 0
   Special: 0
-  Range: 0
-  Damage: 10
+  Range: 5
+  Damage: 0

@@ -15,6 +15,6 @@ MonoBehaviour:
   SkillID: 7
   Fire: 0
   Ice: 0
-  Special: 0
+  Special: 1
   Range: 0
-  Damage: 10
+  Damage: 0
