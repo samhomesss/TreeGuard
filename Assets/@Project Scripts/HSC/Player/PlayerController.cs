@@ -15,12 +15,14 @@ public class PlayerController : MonoBehaviour
     // 현재 플레이어 상태
     public bool isDash = false;
     public bool isAttack = false;
-
+    
     // 현재 이동 키 입력 방향 : 대쉬 중에는 갱신 안됨 다른 상황일땐 계속 갱신됨.
     public Vector2 moveDir;
 
     // 마우스-플레이어 방향
     public Vector2 lookDir;
+
+    public Vector2 moveSpeed;
 
     Vector3 mouseScreenPos;
     Vector3 mouseWorldPos;

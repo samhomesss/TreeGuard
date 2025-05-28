@@ -7,6 +7,7 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private float dashDuration = 0.2f;
 
     Rigidbody2D rb;
+    Vector2 currentDashVelocity;
 
     void Start()
     {
@@ -16,6 +17,18 @@ public class PlayerDash : MonoBehaviour
     void Update()
     {
         GetDashInput();
+    }
+
+    void FixedUpdate()
+    {
+        if (PlayerController.Instance.isDash)
+        {
+            // 속도 제한: 외부 AddForce 방지
+            if (rb.linearVelocity.magnitude > currentDashVelocity.magnitude)
+            {
+                rb.linearVelocity = currentDashVelocity;
+            }
+        }
     }
 
     private void GetDashInput()
@@ -42,8 +55,8 @@ public class PlayerDash : MonoBehaviour
         }
 
         // 이동 중 대쉬
-        Vector2 dashVelocity = direction * dashSpeed;
-        rb.linearVelocity = dashVelocity;
+        currentDashVelocity = direction * dashSpeed;
+        rb.linearVelocity = currentDashVelocity;
 
         // Todo : 대시 후 대시 상태를 유지할 수 있도록 추가 로직 구현
     }

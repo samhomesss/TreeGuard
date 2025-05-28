@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
     Rigidbody2D rb;
     Vector2 attackPushForceDir;
     WeaponData currentWeapon;
+    PlayerAnimationEventController playerAnimationEventController;
 
     [SerializeField] private float attackPushForce = 7f; // 공격 반동 힘
     [SerializeField] private float specialAttackPushForce = 10f; // 특수 공격 반동 힘
@@ -13,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerAnimationEventController = GetComponent<PlayerAnimationEventController>();
         currentWeapon = PlayerController.Instance.currentWeapon;
         currentWeapon.Init(); // 무기 데이터 초기화
     }
@@ -25,6 +27,11 @@ public class PlayerAttack : MonoBehaviour
     private void GetAttackInput()
     {
         //todo : 공격버퍼
+        if(PlayerController.Instance.isDash)
+        {
+            //대쉬 공격 없음
+            return;
+        }
 
         if (Input.GetMouseButtonDown(0) && !PlayerController.Instance.isAttack)
         {
@@ -50,10 +57,12 @@ public class PlayerAttack : MonoBehaviour
         PlayerController.Instance.isAttack = true;
         rb.linearVelocity = Vector2.zero;
         yield return new WaitForSeconds(currentWeapon.readyDuration);
+
         Attack(time);
-        yield return new WaitForSeconds(0.1f); // 공격 애니메이션 시작 후 잠시 대기
-        rb.linearVelocity = Vector2.zero; // 공격 후 이동속도 초기화
-        yield return new WaitForSeconds(time); // 애니메이션 끝나는 시간
+        playerAnimationEventController.EnableAttackCollider(); // 공격 콜라이더 활성화
+        yield return new WaitForSeconds(time); // 공격 애니메이션 시작 후 잠시 대기
+        playerAnimationEventController.DisableAttackCollider(); // 공격 콜라이더 비활성화
+
         PlayerController.Instance.isAttack = false;
     }
 
@@ -62,10 +71,12 @@ public class PlayerAttack : MonoBehaviour
         PlayerController.Instance.isAttack = true;
         rb.linearVelocity = Vector2.zero;
         yield return new WaitForSeconds(currentWeapon.specialReadyDuration);
+
         SpecialAttack();
-        yield return new WaitForSeconds(0.1f); // 공격 애니메이션 시작 후 잠시 대기
-        rb.linearVelocity = Vector2.zero; // 공격 후 이동속도 초기화
+        playerAnimationEventController.EnableSpecialAttackCollider(); // 특수 공격 콜라이더 활성화
         yield return new WaitForSeconds(time); // 애니메이션 끝나는 시간
+        playerAnimationEventController.DisableSpecialAttackCollider(); // 특수 공격 콜라이더 비활성화
+
         PlayerController.Instance.isAttack = false;
     }
 
