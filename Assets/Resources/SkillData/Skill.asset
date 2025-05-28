@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff1925192b141a45822215b3844f190, type: 3}
   m_Name: Skill
   m_EditorClassIdentifier: 
+  SkillID: 0
   Fire: 0
   Ice: 0
   Special: 0
   Range: 0
-  Damage: 0
+  Damage: 10

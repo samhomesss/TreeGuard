@@ -13,6 +13,8 @@ public class TestList : MonoBehaviour
         Managers.Game.OnBranchGetInvenEvent += BranchDataGet;
     }
 
+
+
     void BranchDataGet(BranchData branchData)
     {
         branch.Clear();
@@ -36,6 +38,9 @@ public class TestList : MonoBehaviour
         {
             DamageTest += item.Damage;
         }
+
+        //TODO : 해당 만들어진 branch list를 넘기는 걸로
+
         Debug.Log(DamageTest);
     }
 }
