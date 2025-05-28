@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Tree : UI_Scene
+public class SkillTree : UI_Scene
 {
     // 일단 있어야 하는거 
     // 해당 모든 정보들을 저장 하는 하나의 ScriptableObject

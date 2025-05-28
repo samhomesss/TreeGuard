@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 934b5f3fb33223941b53622f4b862796, type: 3}
-  m_Name: LeftBranchData
+  m_Name: Right2-1
   m_EditorClassIdentifier: 
-  branchID: 0
-  parentBranch: {fileID: 0}
-  childrenBranch: []
+  branchID: 12
+  parentBranch: {fileID: 11400000, guid: 61207cf6c1911b9428409fd17ac8cc4d, type: 2}
+  childrenBranch:
+  - {fileID: 11400000, guid: 0bfb465368cf88b4b88ec543a38d0f91, type: 2}
   branchSkill: []
   isOpen: 0
