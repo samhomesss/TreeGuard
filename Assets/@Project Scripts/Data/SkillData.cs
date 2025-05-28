@@ -3,7 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName =("Data/SkillData"))]
 public class SkillData : ScriptableObject
 {
-    bool Fire;
-    bool Ice;
-    bool Range;
+    public bool Fire;
+    public bool Ice;
+    public bool Special;
+    public float Range;
+    public float Damage;
 }
