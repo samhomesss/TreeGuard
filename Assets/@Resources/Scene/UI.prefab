@@ -49,6 +49,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillOpenTester
       objectReference: {fileID: 0}
+    - target: {fileID: 5968337818807821940, guid: 303ba1c06cb3a2b459b6f221373aa7ef, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7541697840272510039, guid: 303ba1c06cb3a2b459b6f221373aa7ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -696.9213
