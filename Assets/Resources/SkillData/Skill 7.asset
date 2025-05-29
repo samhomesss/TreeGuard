@@ -16,5 +16,5 @@ MonoBehaviour:
   Fire: 0
   Ice: 0
   Special: 1
-  Range: 0
+  Range: 15
   Damage: 0
