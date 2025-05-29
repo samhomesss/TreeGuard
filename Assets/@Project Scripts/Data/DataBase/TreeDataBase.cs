@@ -25,10 +25,8 @@ public class TreeDataBase : MonoBehaviour
         AddData(14, "Left1-2");
         AddData(15, "Right1-2");
 
-        // 테스트 시 모든 BranchData의 isOpen을 true로 초기화
-#if UNITY_EDITOR
-        InitializeBranchDataForTesting();
-#endif
+        // 시작시 모든 BranchData의 isOpen을 true로 초기화
+        InitializeBranchData();
     }
 
     private void AddData(int key, string path)
@@ -47,15 +45,17 @@ public class TreeDataBase : MonoBehaviour
         }
     }
 
-    private void InitializeBranchDataForTesting()
+    private void InitializeBranchData()
     {
         foreach (var item in _branchData)
         {
             if (item.Value != null)
             {
-                item.Value.isOpen = true;
-                Debug.Log($"Set isOpen to true for BranchData ID: {item.Key}");
+                // ID가 0번이면 열기, 나머지는 닫기
+                item.Value.isOpen = (item.Key == 0);
             }
         }
+
+        Debug.Log("[TreeDataBase] 초기화 완료: Root만 열린 상태로 시작");
     }
 }

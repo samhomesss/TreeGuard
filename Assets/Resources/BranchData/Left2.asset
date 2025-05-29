@@ -20,4 +20,4 @@ MonoBehaviour:
   branchSkill:
   - {fileID: 11400000, guid: 66a2d2e876e697c43877c33b26d6b10f, type: 2}
   - {fileID: 11400000, guid: 61f338a43f5649d4da03ade52aac876a, type: 2}
-  isOpen: 1
+  isOpen: 0
