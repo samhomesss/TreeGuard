@@ -29,6 +29,11 @@ public class SkillTreeBranch : UI_Scene
             return false;
         }
 
+        if (treeID != 0)
+        {
+            _canvas.enabled = false;
+        }
+
         return true;
     }
 
