@@ -50,6 +50,7 @@ public class GameManager
 
     //UI
     public event Action OnUISkillTreeCanvasEvent; // 스킬트리 UI 키는거 
+    public event Action OnUIOtherTreeCanvasEvent; // 다른 나무 UI 키는거 
     public event Action<BranchData> OnSKillTreeCutBranchEvent; // 가지치기
     public event Action<BranchData> OnBranchGetInvenEvent; // 가지치기 했을때 해당 스킬들을 인벤토리에 넣기전 데이터를 정리 하는 이벤트 
     public event Action<List<BranchData>, List<SkillData>> OnGetBranchInventory; // 정말로 인벤토리에 넣어주는 이벤트 
@@ -59,6 +60,11 @@ public class GameManager
     public void UISkillTreeCanvas()
     {
         OnUISkillTreeCanvasEvent?.Invoke();
+    }
+
+    public void UIOtherTreeCanvas()
+    {
+        OnUIOtherTreeCanvasEvent?.Invoke();
     }
     public void SkillTreeCutBranch(BranchData branchData)
     {
