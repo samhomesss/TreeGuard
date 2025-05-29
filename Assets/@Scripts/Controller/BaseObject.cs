@@ -19,6 +19,9 @@ public class BaseObject : InitBase
     bool _lookLeft = true;
 
     // 온라인 멀티 게임을 염두해 두고 만든 변수 
+    /// <summary>
+    /// 좌우 판단 LookLeft
+    /// </summary>
     public bool LookLeft 
     {
         get
@@ -61,7 +64,7 @@ public class BaseObject : InitBase
         return objects[idx] as T;
     }
 
-    //Todo : 게임 오브젝트를 다른 곳으로 가져오기 위해서 Public으로 변경 하지만 protected로 해놓은거를 public 으로 바꿔야 할지가 고민 
+    // Todo : 게임 오브젝트를 다른 곳으로 가져오기 위해서 Public으로 변경 하지만 protected로 해놓은거를 public 으로 바꿔야 할지가 고민 
     public GameObject GetObject(int idx) { return Get<GameObject>(idx); }
     #endregion
     public override bool Init()

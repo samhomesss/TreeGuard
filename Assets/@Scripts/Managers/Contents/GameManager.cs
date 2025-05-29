@@ -36,7 +36,6 @@ public class GameManager
     {
         get => _inputSystemState;
         set
-
         {
             _inputSystemState = value;
             OnInputSystemStateChanged?.Invoke(_inputSystemState);

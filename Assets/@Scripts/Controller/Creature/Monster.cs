@@ -53,7 +53,7 @@ public class Monster : Creature
 
     #region AI
     public float SearchDistance { get; private set; } = 8.0f; // 확인 사거리 
-    public float AttackDistance { get; private set; } = 4.0f; // 공격 사거리
+    public float AttackDistance { get; private set; } = 1.0f; // 공격 사거리
 
     Creature _target; // target
     Vector3 _destPos; // 정찰 위치 
@@ -151,6 +151,7 @@ public class Monster : Creature
         // 일정 시간이 지난후에 해당 Move로 방향을 바꿔줌 
         if (_coWait != null)
             return;
+
         Debug.Log("Enemy 공격중 ");
 
         CreatureState = ECreatureState.Move;

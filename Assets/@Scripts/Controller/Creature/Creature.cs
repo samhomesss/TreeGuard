@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static Define;
+
 public class Creature : BaseObject
 {
     public float Speed { get; protected set; } = 1.0f;
@@ -56,6 +57,7 @@ public class Creature : BaseObject
 
     #region AI
     public float UpdateAITick { get; protected set; } = 0.0f;
+
     protected IEnumerator CoUpdateAI()
     {
         while (true)

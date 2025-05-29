@@ -1,5 +1,10 @@
 using UnityEngine;
 using static Define;
+
+/// <summary>
+/// TODO: 해당 스크립트 안에서 Dash 이런 부분 구현 해서 해당 바뀌는 변수를 
+/// GameManager로 넘기고
+/// </summary>
 public class InputSystem : MonoBehaviour
 {
     float _inputX;
@@ -11,6 +16,7 @@ public class InputSystem : MonoBehaviour
         Move();
         Attack();
     }
+
     void Move()
     {
         _inputX = Input.GetAxis("Horizontal");
@@ -18,7 +24,6 @@ public class InputSystem : MonoBehaviour
         moveDir = new Vector2(_inputX, _inputY);
         Managers.Game.MoveDir = moveDir;
         Managers.Game.InputSystemState = EInputSystemState.Move;
-
     }
 
     void Attack()
