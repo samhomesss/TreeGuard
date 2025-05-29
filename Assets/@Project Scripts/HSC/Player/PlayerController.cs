@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -23,6 +24,12 @@ public class PlayerController : MonoBehaviour
 
     Vector3 mouseScreenPos;
     Vector3 mouseWorldPos;
+
+    public Dictionary<ItemType, int> itemCount = new Dictionary<ItemType, int>()
+    {
+        { ItemType.Soul, 0 },
+        { ItemType.Leaf, 0 }
+    };
 
     private void Awake()
     {

@@ -16,6 +16,10 @@ public class SkiillEquipPlayer : MonoBehaviour
     public float readyDuration = 0.2f;
     public float specialReadyDuration = 0.3f;
 
+    [SerializeField] GameObject Weapon;
+    [SerializeField] GameObject WeaponCollider;
+    float weaponSize = 1.0f; 
+
     private void Start()
     {
         Managers.Game.OnEquipedBranch += GetBranchEquipment;
@@ -76,6 +80,10 @@ public class SkiillEquipPlayer : MonoBehaviour
         {
             TotalRange += skill.Range;
         }
+
+        weaponSize = TotalRange / 10f;
+        Weapon.transform.localScale = new Vector3(weaponSize, weaponSize, 1.0f);
+        WeaponCollider.transform.localScale = new Vector3(weaponSize, weaponSize, 1.0f);
     }
 
     // TODO : 스킬 이펙트 모아서 한번에 실행되는 코드 => PlayerAttack의 Attack함수에 들어갈 예정
