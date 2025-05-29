@@ -22,6 +22,7 @@ public class MonsterEffect : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+        stackColors[0] = originalColor; // 첫 번째 스택은 원래 색상으로 설정
         returnColor = originalColor; // 원래 색상 저장
     }
 

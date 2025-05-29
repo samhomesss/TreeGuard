@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class MonsterHP : MonoBehaviour
@@ -13,13 +14,19 @@ public class MonsterHP : MonoBehaviour
 
     SkiillEquipPlayer currentWeapon; // 플레이어의 현재 장착된 무기
     MonsterEffect monsterEffect;
+    GameObject damageTextObj;
+    DamageText damageText;
+    Transform damageTextCanvas;
 
     private Coroutine fireCoroutine;
 
     private void Start()
     {
         currentWeapon = FindAnyObjectByType<SkiillEquipPlayer>();
+        damageTextCanvas = GameObject.Find("DamageTextCanvas").transform;
         monsterEffect = GetComponent<MonsterEffect>();
+        damageTextObj = Resources.Load<GameObject>("DamageText");
+        
         currentHP = maxHP;
     }
 
@@ -35,7 +42,7 @@ public class MonsterHP : MonoBehaviour
 
     private void TakeAttack()
     {
-        TakeDamage(currentWeapon.TotalDamage);
+        TakeDamage(currentWeapon.TotalDamage, Color.yellow);
         if (currentWeapon.HasFire)
         {
             TakeFireAttack();
@@ -47,9 +54,14 @@ public class MonsterHP : MonoBehaviour
         }
     }
 
-    private void TakeDamage(float damage)
+    private void TakeDamage(float damage, Color color)
     {
         monsterEffect.TakeDamageEffect();
+
+        GameObject dt = Instantiate(damageTextObj, transform.position, Quaternion.identity);
+        dt.transform.SetParent(damageTextCanvas, false); // 캔버스에 자식으로 설정
+        damageText = dt.GetComponent<DamageText>();
+        damageText.SetDamage((int)damage, color);
 
         currentHP -= damage;
         if (currentHP <= 0)
@@ -80,7 +92,8 @@ public class MonsterHP : MonoBehaviour
         while (elapsedTime < duration)
         {
             yield return new WaitForSeconds(damageInterval);
-            TakeDamage(fireDamage);
+            TakeDamage(fireDamage, Color.red);
+            
             elapsedTime += damageInterval;
         }
     }
