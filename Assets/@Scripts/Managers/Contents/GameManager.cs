@@ -55,6 +55,7 @@ public class GameManager
     public event Action<List<BranchData>, List<SkillData>> OnGetBranchInventory; // 정말로 인벤토리에 넣어주는 이벤트 
     public event Action<List<BranchData>, List<SkillData>> OnEquipedBranch; // 장비 장착  
     //public event Action<List<BranchData>, List<SkillData>> OnEquipTOGOInventory; // 장비에서 branch로 
+    public event Action OnGiveWaterEvent;
     public void UISkillTreeCanvas()
     {
         OnUISkillTreeCanvasEvent?.Invoke();
@@ -74,6 +75,11 @@ public class GameManager
     public void EquipedBranch(List<BranchData> branchDatas, List<SkillData> skillDatas)
     {
         OnEquipedBranch?.Invoke(branchDatas, skillDatas);
+    }
+
+    public void GiveWater()
+    {
+        OnGiveWaterEvent?.Invoke();
     }
 
    // public void EquipTOGOInventory(List<BranchData> branchDatas, List<SkillData> skillDatas)
