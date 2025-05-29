@@ -1,5 +1,11 @@
 using UnityEngine;
 
+public enum ItemType
+{
+    Soul,
+    Leaf
+}
+
 public class PlayerInteract : MonoBehaviour
 {
     public float interactRadius = 2f;

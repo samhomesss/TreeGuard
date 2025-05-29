@@ -169,7 +169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   currentHP: 0
-  moveSpeed: 5
   currentIceStacks: 0
   slowMultipliers:
   - 1
@@ -205,8 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546385d14f36185408286468049422bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originalMoveSpeed: 5
   moveSpeed: 5
-  detectionRange: 20
+  detectionRange: 15
   wanderRange: 3
   wanderInterval: 2
-  startWaveTime: 10
+  startWaveTime: 20

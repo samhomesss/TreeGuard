@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class MonsterAI : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5f; // 몬스터 이동 속도
+    public float originalMoveSpeed = 5f; // 몬스터 기본 이동 속도
+    public float moveSpeed = 5f; // 몬스터 이동 속도
     [SerializeField] private float detectionRange = 20f;
     private Vector2 moveDir;
 
@@ -22,20 +23,18 @@ public class MonsterAI : MonoBehaviour
 
 
     private Rigidbody2D rb;
-    private MonsterHP monsterHP;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         tree = GameObject.Find("Tree").transform;
         rb = GetComponent<Rigidbody2D>();
-        monsterHP = GetComponent<MonsterHP>();
+        moveSpeed = originalMoveSpeed;
     }
 
     void Update()
     {
         timeSinceStart += Time.deltaTime;
-        moveSpeed *= monsterHP.GetCurrentSpeedMultiplier();
 
         if (ShouldChasePlayer())
         {

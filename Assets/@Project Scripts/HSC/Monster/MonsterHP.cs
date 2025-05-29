@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class MonsterHP : MonoBehaviour
 {
-    [SerializeField] private float maxHP = 100f;
+    [SerializeField] private float maxHP = 300f;
     [SerializeField] float currentHP;
 
     //public int maxIceStacks = 3;
     public int currentIceStacks = 0; // 현재 스택 수
-    public float[] slowMultipliers = { 1.0f, 0.8f, 0.6f, 0.2f }; // 스택별 속도
+    public float[] slowMultipliers = { 1.0f, 0.7f, 0.5f, 0.01f }; // 스택별 속도
 
     SkiillEquipPlayer currentWeapon; // 플레이어의 현재 장착된 무기
     MonsterEffect monsterEffect;
     GameObject damageTextObj;
     DamageText damageText;
     Transform damageTextCanvas;
+    MonsterAI monsterAI;
 
     private Coroutine fireCoroutine;
 
@@ -25,6 +26,7 @@ public class MonsterHP : MonoBehaviour
         damageTextCanvas = GameObject.Find("DamageTextCanvas").transform;
         monsterEffect = GetComponent<MonsterEffect>();
         damageTextObj = Resources.Load<GameObject>("DamageText");
+        monsterAI = GetComponent<MonsterAI>();
 
         currentHP = maxHP;
     }
@@ -99,10 +101,11 @@ public class MonsterHP : MonoBehaviour
 
     private void TakeIceAttack()
     {
-        float iceDuration = 2f; // 얼음 공격 지속 시간
+        float iceDuration = 3f; // 얼음 공격 지속 시간
 
         currentIceStacks++;
         monsterEffect.UpdateIceEffect(currentIceStacks);
+        monsterAI.moveSpeed = monsterAI.originalMoveSpeed * GetCurrentSpeedMultiplier();
         StartCoroutine(IceSlowEffect(iceDuration));
     }
 
@@ -113,11 +116,14 @@ public class MonsterHP : MonoBehaviour
         {
             currentIceStacks--;
             monsterEffect.UpdateIceEffect(currentIceStacks);
+            monsterAI.moveSpeed = monsterAI.originalMoveSpeed * GetCurrentSpeedMultiplier();
         }
     }
 
     public float GetCurrentSpeedMultiplier()
     {
+        Debug.Log($"Current Ice Stacks: {currentIceStacks}");
+        Debug.Log("이동속도" + monsterAI.moveSpeed);
         if (currentIceStacks >= slowMultipliers.Length)
         {
             return slowMultipliers[slowMultipliers.Length - 1]; // 최대 스택 수를 초과하면 가장 느린 속도 반환
