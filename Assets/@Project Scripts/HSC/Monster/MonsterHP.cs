@@ -6,7 +6,6 @@ public class MonsterHP : MonoBehaviour
 {
     [SerializeField] private float maxHP = 100f;
     [SerializeField] float currentHP;
-    [SerializeField] float moveSpeed = 5f; // 몬스터 이동 속도
 
     //public int maxIceStacks = 3;
     public int currentIceStacks = 0; // 현재 스택 수
@@ -26,7 +25,7 @@ public class MonsterHP : MonoBehaviour
         damageTextCanvas = GameObject.Find("DamageTextCanvas").transform;
         monsterEffect = GetComponent<MonsterEffect>();
         damageTextObj = Resources.Load<GameObject>("DamageText");
-        
+
         currentHP = maxHP;
     }
 
@@ -117,7 +116,14 @@ public class MonsterHP : MonoBehaviour
         }
     }
 
-
+    public float GetCurrentSpeedMultiplier()
+    {
+        if (currentIceStacks >= slowMultipliers.Length)
+        {
+            return slowMultipliers[slowMultipliers.Length - 1]; // 최대 스택 수를 초과하면 가장 느린 속도 반환
+        }
+        return slowMultipliers[currentIceStacks];
+    }
 
     private void Die()
     {
