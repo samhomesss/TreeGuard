@@ -21,7 +21,9 @@ public class SkiillEquipPlayer : MonoBehaviour
 
     [SerializeField] GameObject Weapon;
     [SerializeField] GameObject WeaponCollider;
-    float weaponSize = 1.0f; 
+    float weaponSize = 1.0f;
+
+    public List<GameObject> projectiles = new List<GameObject>();
 
     private void Start()
     {
@@ -38,6 +40,19 @@ public class SkiillEquipPlayer : MonoBehaviour
         CheckElementalSkills();
         CalculateTotalRange();
         CalculateTotalAttackPushForce();
+        CheckProjectiles();
+    }
+
+    private void CheckProjectiles()
+    {
+        projectiles.Clear();
+        foreach (SkillData skill in skillData)
+        {
+            if (skill.Projectile != null)
+            {
+                projectiles.Add(skill.Projectile);
+            }
+        }
     }
 
     private void CalculateTotalAttackPushForce()

@@ -100,6 +100,20 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
+        // 총알 발사
+        if (currentWeapon.projectiles.Count > 0)
+        {
+            foreach (GameObject projectilePrefab in currentWeapon.projectiles)
+            {
+                GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Projectile proj = projectile.GetComponent<Projectile>();
+                if (proj != null)
+                {
+                    proj.Init(PlayerController.Instance.lookDir); // 총알 초기화
+                }
+            }
+        }
+
         // 무적 상태
         if (currentWeapon.IsInvincible)
         {

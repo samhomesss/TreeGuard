@@ -14,4 +14,7 @@ public class SkillData : ScriptableObject
     public float EffectDuration;
     public float AttackPushForce;
     public bool Invincible;
+
+    public GameObject Projectile;
+
 }

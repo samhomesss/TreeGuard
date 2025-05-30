@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1436798691011937482}
   m_Layer: 0
   m_Name: Monster01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,6 +207,5 @@ MonoBehaviour:
   originalMoveSpeed: 5
   moveSpeed: 5
   detectionRange: 15
-  wanderRange: 3
-  wanderInterval: 2
+  damage: 10
   startWaveTime: 20

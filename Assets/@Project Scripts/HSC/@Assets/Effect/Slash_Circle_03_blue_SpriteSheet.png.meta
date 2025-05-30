@@ -372,7 +372,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Slash_Circle_03_blue_SpriteSheet_0: 2133431418969914262
+      Slash_Circle_03_blue_SpriteSheet_1: -6254775292999111621
+      Slash_Circle_03_blue_SpriteSheet_2: 8805854022964718346
+      Slash_Circle_03_blue_SpriteSheet_3: 891192362656853250
+      Slash_Circle_03_blue_SpriteSheet_4: -1766700524969207001
+      Slash_Circle_03_blue_SpriteSheet_5: 5783921138706983417
+      Slash_Circle_03_blue_SpriteSheet_6: -4440911493888491905
+      Slash_Circle_03_blue_SpriteSheet_7: 5354967218304220846
+      Slash_Circle_03_blue_SpriteSheet_8: -8614478941225433138
+      Slash_Circle_03_blue_SpriteSheet_9: -4480930773968452137
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
