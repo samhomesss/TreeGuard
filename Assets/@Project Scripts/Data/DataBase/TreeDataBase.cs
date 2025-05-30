@@ -53,6 +53,7 @@ public class TreeDataBase : MonoBehaviour
             {
                 // ID가 0번이면 열기, 나머지는 닫기
                 item.Value.isOpen = (item.Key == 0);
+                item.Value.isCut = (item.Key == 0);
             }
         }
 

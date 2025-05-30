@@ -7,6 +7,10 @@ public class GraftBranch : MonoBehaviour
     Button _button;
     Canvas _uiSkillTree;
     Canvas _uiOtherTree;
+
+    public Canvas _canvas;
+    public Canvas _selectCanvas;
+
     private void Start()
     {
         _uiSkillTree = FindAnyObjectByType<UI_SkillTree>().GetComponent<Canvas>();
@@ -64,5 +68,8 @@ public class GraftBranch : MonoBehaviour
         }
        
         slot._slotImage.sprite = null;
+
+        _canvas.enabled = false;
+        _selectCanvas.enabled = false;
     }
 }

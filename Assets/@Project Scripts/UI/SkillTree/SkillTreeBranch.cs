@@ -10,6 +10,8 @@ public class SkillTreeBranch : UI_Scene
     private BranchData _branchData;
     private Canvas _canvas;
 
+    EquipSlot _equipSlot;
+
     public override bool Init()
     {
         if (!base.Init()) return false;
@@ -25,6 +27,8 @@ public class SkillTreeBranch : UI_Scene
 
         if (treeID != 0)
             _canvas.enabled = false;
+
+        _equipSlot = FindAnyObjectByType<EquipSlot>();
 
         return true;
     }
@@ -43,7 +47,15 @@ public class SkillTreeBranch : UI_Scene
 
     private void OnBranchClick()
     {
-        Managers.Game.BranchGetInven(_branchData);
+        if (!_equipSlot.IsEmpty)
+        {
+            // TODO: 여기서 장비창에 데이터 넘겨 줘야 됨
+            Managers.Game.EquipWeaponAddData(_branchData);
+        }
+        else
+        {
+            Managers.Game.BranchGetInven(_branchData);
+        }
         Managers.Game.SkillTreeCutBranch(_branchData);
     }
 
