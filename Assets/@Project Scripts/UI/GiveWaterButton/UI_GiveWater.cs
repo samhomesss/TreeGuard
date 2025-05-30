@@ -29,5 +29,6 @@ public class UI_GiveWater : UI_Scene
         }
         Managers.Game.GiveWater();
         PlayerController.Instance.itemCount[ItemType.Soul]--;
+        Managers.Game.GetItem1(-1);
     }
 }

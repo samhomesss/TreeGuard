@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5360676382955570332}
   - component: {fileID: 4285251201918338174}
   - component: {fileID: 1436798691011937482}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monster01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &5628253484969570912
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -208,4 +208,4 @@ MonoBehaviour:
   moveSpeed: 5
   detectionRange: 15
   damage: 10
-  startWaveTime: 20
+  monsterType: 1

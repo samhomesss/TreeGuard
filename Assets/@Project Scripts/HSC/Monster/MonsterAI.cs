@@ -14,15 +14,25 @@ public class MonsterAI : MonoBehaviour
 
 
     // 웨이브 타이밍인데 나중엔 웨이브 매니저 두고 몬스터는 몇번째 웨이브에 출발할지만 정해두어야함.
-    [SerializeField] private float startWaveTime;
-    private float timeSinceStart;
-
+    //[SerializeField] private float startWaveTime;
+    //private float timeSinceStart;
+    public int monsterType = 1; // 몬스터 타입
 
     private Transform player;
     private Transform tree;
 
 
     private Rigidbody2D rb;
+
+    private bool onWave = false;
+    private void Awake()
+    {
+        // 웨이브 매니저에서 웨이브 시작 이벤트를 구독
+        if(monsterType == 1)
+            WaveManager.Instance.type1WaveStart += OnWaveStart;
+        else if (monsterType == 2)
+            WaveManager.Instance.type2WaveStart += OnWaveStart;
+    }
 
     void Start()
     {
@@ -34,13 +44,11 @@ public class MonsterAI : MonoBehaviour
 
     void Update()
     {
-        timeSinceStart += Time.deltaTime;
-
         if (ShouldChasePlayer())
         {
             ChasePlayer();
         }
-        else if (timeSinceStart >= startWaveTime)
+        else if (onWave)
         {
             // 매번 초기화할필요는 없는데.. 아몰랑 ㅎ
             moveDir = (tree.position - transform.position).normalized;
@@ -50,6 +58,11 @@ public class MonsterAI : MonoBehaviour
             // Todo : 몬스터 순찰 로직
             moveDir = Vector2.zero;
         }
+    }
+
+    private void OnWaveStart()
+    {
+        onWave = true;
     }
 
     private void FixedUpdate()
@@ -66,5 +79,14 @@ public class MonsterAI : MonoBehaviour
     private void ChasePlayer()
     {
         moveDir = (player.position - transform.position).normalized;
+    }
+
+    private void OnDestroy()
+    {
+        // 웨이브 매니저에서 웨이브 시작 이벤트 구독 해제
+        if (monsterType == 1)
+            WaveManager.Instance.type1WaveStart -= OnWaveStart;
+        else if (monsterType == 2)
+            WaveManager.Instance.type2WaveStart -= OnWaveStart;
     }
 }

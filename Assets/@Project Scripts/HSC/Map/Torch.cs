@@ -22,6 +22,7 @@ public class Torch : MonoBehaviour, IInteractable
 
     private void Start()
     {
+        Managers.Game.GiveWater();
         if (isActivated)
         {
             ActivateTorch();
@@ -41,7 +42,7 @@ public class Torch : MonoBehaviour, IInteractable
             {
                 timer = 0f;
                 growCount++;
-                if(growCount >= 2)
+                if(growCount >= 3)
                 {
                     growCount = 0;
                     Managers.Game.GiveWater();
@@ -64,6 +65,8 @@ public class Torch : MonoBehaviour, IInteractable
         if (PlayerController.Instance.itemCount[ItemType.Leaf] <= 0)
             return;
 
+        PlayerController.Instance.itemCount[ItemType.Leaf]--;
+        Managers.Game.GetItem2(-1);
         leafCount++;
 
         TryActivate();
