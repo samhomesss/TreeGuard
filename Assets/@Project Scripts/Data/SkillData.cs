@@ -9,4 +9,9 @@ public class SkillData : ScriptableObject
     public bool Special;
     public float Range;
     public float Damage;
+
+    public GameObject SkillEffect;
+    public float EffectDuration;
+    public float AttackPushForce;
+    public bool Invincible;
 }
