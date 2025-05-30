@@ -119,6 +119,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!223 &454920450 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 5156468382304969162, guid: 0cc2363eb3719c54e8950944c615ac5e, type: 3}
+  m_PrefabInstance: {fileID: 425441914769423865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &1092475433 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1493719824321482131, guid: 0cc2363eb3719c54e8950944c615ac5e, type: 3}
+  m_PrefabInstance: {fileID: 425441914769423865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1157998843
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +308,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5156468382304969162, guid: 0cc2363eb3719c54e8950944c615ac5e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8171693717788512388, guid: 0cc2363eb3719c54e8950944c615ac5e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 684.88293
@@ -342,6 +356,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8901692125469361713, guid: 0cc2363eb3719c54e8950944c615ac5e, type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 454920450}
+    - target: {fileID: 8901692125469361713, guid: 0cc2363eb3719c54e8950944c615ac5e, type: 3}
+      propertyPath: _selectCanvas
+      value: 
+      objectReference: {fileID: 1092475433}
     - target: {fileID: 9207309801107209945, guid: 0cc2363eb3719c54e8950944c615ac5e, type: 3}
       propertyPath: m_Name
       value: UI
