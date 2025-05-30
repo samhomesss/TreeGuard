@@ -16,5 +16,10 @@ MonoBehaviour:
   Fire: 0
   Ice: 0
   Special: 0
-  Range: 0
-  Damage: 10
+  Range: 5
+  Damage: 5
+  SkillEffect: {fileID: 0}
+  EffectDuration: 0
+  AttackPushForce: 0
+  Invincible: 0
+  Projectile: {fileID: 0}

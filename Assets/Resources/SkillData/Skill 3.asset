@@ -20,6 +20,6 @@ MonoBehaviour:
   Damage: 10
   SkillEffect: {fileID: 0}
   EffectDuration: 0
-  AttackPushForce: 0
-  Invincible: 0
+  AttackPushForce: 40
+  Invincible: 1
   Projectile: {fileID: 0}
