@@ -204,8 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546385d14f36185408286468049422bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalMoveSpeed: 8
-  moveSpeed: 8
+  originalMoveSpeed: 6
+  moveSpeed: 6
   detectionRange: 10
   damage: 5
   monsterType: 2

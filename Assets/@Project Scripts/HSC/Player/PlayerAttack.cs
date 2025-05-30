@@ -96,8 +96,9 @@ public class PlayerAttack : MonoBehaviour
                         // 마우스 방향이 왼쪽이면 180도 회전
                         rotation *= Quaternion.Euler(0, 180, 0);
                     }
-                    GameObject effect = Instantiate(skill.SkillEffect, transform.position, rotation);
-                    effect.transform.localScale = weaponTransform.localScale; // 무기 크기에 맞춰서 이펙트 크기 조정
+                    //GameObject effect = Instantiate(skill.SkillEffect, transform.position, rotation);
+                    GameObject effect = Instantiate(skill.SkillEffect, weaponTransform);
+                    //effect.transform.localScale = weaponTransform.localScale; // 무기 크기에 맞춰서 이펙트 크기 조정
                     //effect.GetComponentInChildren<ParticleSystem>().Ro
                     Destroy(effect, skill.EffectDuration); // 이펙트 지속시간 후 제거
                 }
