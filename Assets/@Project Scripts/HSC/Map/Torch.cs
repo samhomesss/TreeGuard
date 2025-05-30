@@ -9,6 +9,10 @@ public class Torch : MonoBehaviour, IInteractable
     [SerializeField] private float consumeInterval = 10f; // ¸î ÃÊ¸¶´Ù ÀÙ»ç±Í ¼Ò¸ð
     private Coroutine consumeCoroutine;
 
+    private float timer = 0f;
+    [SerializeField] private float growInterval = 5f;
+    [SerializeField] private int growCount = 0;
+
     [SerializeField] private GameObject activeTorchEffect;
     [SerializeField] private GameObject unactiveTorchEffect;
 
@@ -21,6 +25,24 @@ public class Torch : MonoBehaviour, IInteractable
         else
         {
             DeactivateTorch();
+        }
+    }
+
+    private void Update()
+    {
+        if (isActivated)
+        {
+            timer += Time.deltaTime;
+            if (timer >= growInterval)
+            {
+                timer = 0f;
+                growCount++;
+                if(growCount >= 10)
+                {
+                    growCount = 0;
+                    Managers.Game.GiveWater();
+                }
+            }
         }
     }
 
