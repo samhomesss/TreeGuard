@@ -11,10 +11,13 @@ public class HittableBox : MonoBehaviour, Hittable
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
 
+    MonsterSpawner monsterSpawner;
+
     private void Start()
     {
         currentHP = maxHP;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        monsterSpawner = GetComponent<MonsterSpawner>();
         originalColor = spriteRenderer.color;
     }
 
@@ -54,5 +57,6 @@ public class HittableBox : MonoBehaviour, Hittable
     private void OnDestroy()
     {
         Instantiate(returnItem, transform.position, Quaternion.identity);
+        monsterSpawner?.DestroySpawner();
     }
 }
