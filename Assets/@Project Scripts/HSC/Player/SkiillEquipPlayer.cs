@@ -11,6 +11,9 @@ public class SkiillEquipPlayer : MonoBehaviour
     public bool HasFire;
     public bool HasIce;
     public float TotalRange;
+    public float TotalAttackPushForce;
+    public float TotalSpecialAttackPushForce;
+    public bool IsInvincible = false; // 공격 중 무적 여부
 
     [Tooltip("키 입력 이후 공격 나가기까지의 시간")]
     public float readyDuration = 0.2f;
@@ -34,6 +37,21 @@ public class SkiillEquipPlayer : MonoBehaviour
         CheckSpecialAttack();
         CheckElementalSkills();
         CalculateTotalRange();
+        CalculateTotalAttackPushForce();
+    }
+
+    private void CalculateTotalAttackPushForce()
+    {
+        TotalAttackPushForce = 0;
+        TotalSpecialAttackPushForce = 0;
+        foreach (SkillData skill in skillData)
+        {
+            TotalAttackPushForce += skill.AttackPushForce;
+            if (skill.Special)
+            {
+                TotalSpecialAttackPushForce += skill.AttackPushForce;
+            }
+        }
     }
 
     private void CalculateTotalDamage()
@@ -47,12 +65,18 @@ public class SkiillEquipPlayer : MonoBehaviour
     private void CheckSpecialAttack()
     {
         CanSpecialAttack = false;
+        IsInvincible = false;
         foreach (SkillData skill in skillData)
         {
             if (skill.Special)
             {
                 CanSpecialAttack = true;
                 break;
+            }
+
+            if (skill.Invincible)
+            {
+                IsInvincible = true;
             }
         }
     }

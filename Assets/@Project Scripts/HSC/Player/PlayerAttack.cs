@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     Vector2 attackPushForceDir;
     SkiillEquipPlayer currentWeapon;
     PlayerAnimationEventController playerAnimationEventController;
+    public Transform parentTransform;
 
     [SerializeField] private float attackPushForce = 7f; // 공격 반동 힘
     [SerializeField] private float specialAttackPushForce = 10f; // 특수 공격 반동 힘
@@ -79,24 +80,57 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack(float time)
     {
-        //// 스킬마다 애니메이션, 연출 실행
-        //if (currentWeapon != null && currentWeapon.skills.Length > 0)
-        //{
-        //    foreach (var skill in currentWeapon.skills)
-        //    {
-                
-        //    }
-        //}
+        // 스킬마다 애니메이션, 연출 실행
+        if (currentWeapon != null && currentWeapon.skillData.Count > 0)
+        {
+            foreach (var skill in currentWeapon.skillData)
+            {
+                if( skill.SkillEffect != null)
+                {
+                    // 로테이션 값은 부모 transform의 로테이션을 사용
+                    Quaternion rotation = parentTransform.rotation;
+                    if(PlayerController.Instance.lookDir.x < 0)
+                    {
+                        // 마우스 방향이 왼쪽이면 180도 회전
+                        rotation *= Quaternion.Euler(0, 180, 0);
+                    }
+                    GameObject effect = Instantiate(skill.SkillEffect, transform.position, rotation);
+                    Destroy(effect, skill.EffectDuration); // 이펙트 지속시간 후 제거
+                }
+            }
+        }
+
+        // 무적 상태
+        if (currentWeapon.IsInvincible)
+        {
+            StartCoroutine(ControlInvincibleCoroutine(1f));
+        }
+
 
         // 공격 반동 (앞으로 쏠리는 반동 말하는거임)
         attackPushForceDir = PlayerController.Instance.moveDir;
+        attackPushForce = currentWeapon.TotalAttackPushForce;
+
         if (attackPushForceDir == Vector2.zero)
         {
             // 이동키 입력 없을 때는 때는 마우스 방향으로
             attackPushForceDir = PlayerController.Instance.lookDir;
         }
 
+        if(PlayerController.Instance.moveDir.x * PlayerController.Instance.lookDir.x < 0 
+            || PlayerController.Instance.moveDir.y * PlayerController.Instance.lookDir.y < 0)
+        {
+            // 이동키 방향과 마우스 방향이 반대면 반동을 뒤로 줌
+            attackPushForce = 7f;
+        }
         rb.AddForce(attackPushForceDir * attackPushForce, ForceMode2D.Impulse);
+    }
+
+    IEnumerator ControlInvincibleCoroutine(float time)
+    {
+        GetComponent<CircleCollider2D>().enabled = false; // 무적 상태일 때는 콜라이더 비활성화
+        yield return new WaitForSeconds(time);
+        GetComponent<CircleCollider2D>().enabled = true; // 무적 상태 끝나면 콜라이더 활성화
     }
 
     private void SpecialAttack()

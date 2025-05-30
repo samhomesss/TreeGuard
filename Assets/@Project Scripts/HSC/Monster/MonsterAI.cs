@@ -8,9 +8,9 @@ public class MonsterAI : MonoBehaviour
     [SerializeField] private float detectionRange = 20f;
     private Vector2 moveDir;
 
-
-    [SerializeField] private float wanderRange = 3f; // 몬스터가 돌아다닐 범위
-    [SerializeField] private float wanderInterval = 2f;
+    public float damage = 10f; // 몬스터가 플레이어에게 주는 피해량
+    //[SerializeField] private float wanderRange = 3f; // 몬스터가 돌아다닐 범위
+    //[SerializeField] private float wanderInterval = 2f;
 
 
     // 웨이브 타이밍인데 나중엔 웨이브 매니저 두고 몬스터는 몇번째 웨이브에 출발할지만 정해두어야함.

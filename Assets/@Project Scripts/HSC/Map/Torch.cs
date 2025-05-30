@@ -10,7 +10,7 @@ public class Torch : MonoBehaviour, IInteractable
     private Coroutine consumeCoroutine;
 
     private float timer = 0f;
-    [SerializeField] private float growInterval = 5f;
+    [SerializeField] private float growInterval = 1f;
     [SerializeField] private int growCount = 0;
 
     [SerializeField] private GameObject activeTorchEffect;
@@ -37,7 +37,7 @@ public class Torch : MonoBehaviour, IInteractable
             {
                 timer = 0f;
                 growCount++;
-                if(growCount >= 10)
+                if(growCount >= 2)
                 {
                     growCount = 0;
                     Managers.Game.GiveWater();
