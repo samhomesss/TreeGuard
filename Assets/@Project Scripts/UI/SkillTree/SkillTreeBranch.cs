@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,6 +47,7 @@ public class SkillTreeBranch : UI_Scene
         Managers.Game.SkillTreeCutBranch(_branchData);
     }
 
+    // ✅ 여기가 바로 SkillTreeBranch.cs 안에 있어야 할 BranchCut 함수입니다
     private void BranchCut(BranchData branchData)
     {
         if (treeID != branchData.branchID)
@@ -54,6 +55,7 @@ public class SkillTreeBranch : UI_Scene
 
         _canvas.enabled = false;
         branchData.isOpen = false;
+        branchData.isCut = true; // ✅ 가지치기 표시
 
         if (branchData.childrenBranch.Count == 0)
             return;
@@ -61,7 +63,9 @@ public class SkillTreeBranch : UI_Scene
         foreach (var child in branchData.childrenBranch)
         {
             if (child != null && child.isOpen)
+            {
                 Managers.Game.SkillTreeCutBranch(child);
+            }
         }
     }
 

@@ -9,4 +9,5 @@ public class BranchData : ScriptableObject
     public List<BranchData> childrenBranch; // 해당 가지가 가지고 있는 가지들 -> 어떤 방향으로 성장 할 것인지 나타냄
     public List<SkillData> branchSkill; // 해당 가지가 가지고 있는 스킬정보 , 이거에서 리스트 GameObject로 하지말고 해당 Skill에 대한 정보 를 넣어두는게 좋을 듯?
     public bool isOpen; // 현재 해당 가지가 열릴수 있는 것인지 아닌지 판단 
+    public bool isCut; // 현재 해당 가지가 가지치기를 당한 상태인지 확인 하는거 
 }
