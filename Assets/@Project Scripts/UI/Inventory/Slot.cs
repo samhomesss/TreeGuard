@@ -13,7 +13,6 @@ public class Slot : UI_Scene
     public Sprite branchImage;
 
     UI_SelectButton _uiSelectButton;
-
     public override bool Init()
     {
         if (base.Init() == false)
@@ -24,7 +23,6 @@ public class Slot : UI_Scene
         _button.onClick.AddListener(SlotButtonClick);
 
         _uiSelectButton = FindAnyObjectByType<UI_SelectButton>();
-
         return true;
     }
     void Start()
