@@ -60,6 +60,7 @@ public class GameManager
     public event Action<int> OnPlayerHpChangeEvent; // PlayerHP 변경 이벤트 TODO: 추후 수정
     //public event Action<List<BranchData>, List<SkillData>> OnEquipTOGOInventory; // 장비에서 branch로 
     public event Action OnGiveWaterEvent;
+    public event Action<BranchData> OnEquipWeaponAddDataEvent;
     public void UISkillTreeCanvas()
     {
         OnUISkillTreeCanvasEvent?.Invoke();
@@ -88,7 +89,6 @@ public class GameManager
     {
         OnGiveWaterEvent?.Invoke();
     }
-
     public void GetItem1(int itemcount)
     {
         OnGetItem1Event?.Invoke(itemcount);
@@ -100,6 +100,11 @@ public class GameManager
     public void PlayerHpChange(int hpchange)
     {
         OnPlayerHpChangeEvent?.Invoke(hpchange);
+    }
+
+    public void EquipWeaponAddData(BranchData branchData)
+    {
+        OnEquipWeaponAddDataEvent?.Invoke(branchData);
     }
 
     // public void EquipTOGOInventory(List<BranchData> branchDatas, List<SkillData> skillDatas)
