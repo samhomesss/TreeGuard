@@ -16,10 +16,10 @@ MonoBehaviour:
   Fire: 0
   Ice: 1
   Special: 0
-  Range: 15
+  Range: 5
   Damage: 0
-  SkillEffect: {fileID: 4659261221767830060, guid: 90ed22e0fed498d428a154790b630ae9, type: 3}
+  SkillEffect: {fileID: 117217211799576644, guid: 26b260f8f0f4e004b89bf4116735c44c, type: 3}
   EffectDuration: 0.2
-  AttackPushForce: 100
+  AttackPushForce: 0
   Invincible: 1
-  Projectile: {fileID: 1952564101326831988, guid: 06b2f3fb02236524ba7ccfd6425820f9, type: 3}
+  Projectile: {fileID: 0}

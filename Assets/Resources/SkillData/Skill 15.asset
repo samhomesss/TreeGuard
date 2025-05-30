@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillID: 15
   Fire: 0
-  Ice: 0
+  Ice: 1
   Special: 0
   Range: 0
-  Damage: 10
+  Damage: 20
+  SkillEffect: {fileID: 117217211799576644, guid: 26b260f8f0f4e004b89bf4116735c44c, type: 3}
+  EffectDuration: 0.2
+  AttackPushForce: 0
+  Invincible: 1
+  Projectile: {fileID: 0}

@@ -18,3 +18,8 @@ MonoBehaviour:
   Special: 0
   Range: 10
   Damage: 30
+  SkillEffect: {fileID: 0}
+  EffectDuration: 0
+  AttackPushForce: 0
+  Invincible: 0
+  Projectile: {fileID: 0}
