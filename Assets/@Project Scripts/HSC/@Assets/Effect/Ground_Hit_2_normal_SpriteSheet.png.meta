@@ -622,7 +622,27 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ground_Hit_2_normal_SpriteSheet_0: 3583687813113074417
+      Ground_Hit_2_normal_SpriteSheet_1: 1151218695103692241
+      Ground_Hit_2_normal_SpriteSheet_10: -6112186458694332963
+      Ground_Hit_2_normal_SpriteSheet_11: -5059555822156433232
+      Ground_Hit_2_normal_SpriteSheet_12: -8996074837100846170
+      Ground_Hit_2_normal_SpriteSheet_13: 9089376869809321632
+      Ground_Hit_2_normal_SpriteSheet_14: 6688140174271724274
+      Ground_Hit_2_normal_SpriteSheet_15: 1108915536699183897
+      Ground_Hit_2_normal_SpriteSheet_16: -6567272554234867385
+      Ground_Hit_2_normal_SpriteSheet_17: 3803720546088122831
+      Ground_Hit_2_normal_SpriteSheet_18: -6281503314161381978
+      Ground_Hit_2_normal_SpriteSheet_19: -8403717755066039087
+      Ground_Hit_2_normal_SpriteSheet_2: -5866889281479609442
+      Ground_Hit_2_normal_SpriteSheet_3: 7517116164591622344
+      Ground_Hit_2_normal_SpriteSheet_4: 7711297242700075967
+      Ground_Hit_2_normal_SpriteSheet_5: -7207414080396622143
+      Ground_Hit_2_normal_SpriteSheet_6: 7089626806576901627
+      Ground_Hit_2_normal_SpriteSheet_7: 2400650756016503718
+      Ground_Hit_2_normal_SpriteSheet_8: 4656677561684876352
+      Ground_Hit_2_normal_SpriteSheet_9: -6425347471694149327
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

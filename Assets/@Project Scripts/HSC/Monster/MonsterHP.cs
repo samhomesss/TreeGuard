@@ -33,7 +33,15 @@ public class MonsterHP : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerAttack"))
+        if(collision.CompareTag("Projectile"))
+        {
+            Projectile projectile = collision.GetComponent<Projectile>();
+            if (projectile != null)
+            {
+                TakeDamage(projectile.damage, Color.white);
+            }
+        }
+        else if (collision.CompareTag("PlayerAttack"))
         {
             TakeAttack();
             // 공격 콜라이더 비활성화 (중첩딜 방지)
