@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Torch : MonoBehaviour, IInteractable
 {
+    public Canvas _uiEKey;
+    public GameObject _player;
+
+
     public int leafCount = 0; // ÇöÀç ÀÙ»ç±Í °³¼ö
     public bool isActivated = false;
 
@@ -44,6 +48,15 @@ public class Torch : MonoBehaviour, IInteractable
                 }
             }
         }
+
+        float dir = (transform.position - _player.transform.position).magnitude;
+        if (dir <= 2f)
+        {
+            _uiEKey.enabled = true;
+        }
+        else
+            _uiEKey.enabled = false;
+
     }
 
     public void Interact()

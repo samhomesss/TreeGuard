@@ -61,6 +61,7 @@ public class GameManager
     //public event Action<List<BranchData>, List<SkillData>> OnEquipTOGOInventory; // 장비에서 branch로 
     public event Action OnGiveWaterEvent;
     public event Action<BranchData> OnEquipWeaponAddDataEvent;
+    public event Action OnWaveCommingEvent;
     public void UISkillTreeCanvas()
     {
         OnUISkillTreeCanvasEvent?.Invoke();
@@ -101,12 +102,14 @@ public class GameManager
     {
         OnPlayerHpChangeEvent?.Invoke(hpchange);
     }
-
     public void EquipWeaponAddData(BranchData branchData)
     {
         OnEquipWeaponAddDataEvent?.Invoke(branchData);
     }
-
+    public void WaveComming()
+    {
+        OnWaveCommingEvent?.Invoke();
+    }
     // public void EquipTOGOInventory(List<BranchData> branchDatas, List<SkillData> skillDatas)
     // {
     //     OnEquipTOGOInventory?.Invoke(branchDatas, skillDatas);
