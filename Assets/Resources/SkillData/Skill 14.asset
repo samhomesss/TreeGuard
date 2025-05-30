@@ -16,7 +16,7 @@ MonoBehaviour:
   Fire: 0
   Ice: 1
   Special: 1
-  Range: 15
+  Range: 10
   Damage: 0
   SkillEffect: {fileID: 0}
   EffectDuration: 0
