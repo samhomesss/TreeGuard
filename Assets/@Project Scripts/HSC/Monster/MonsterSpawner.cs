@@ -9,6 +9,8 @@ public class MonsterSpawner : MonoBehaviour
     private float timer = 0f;
     private bool isDestroyed = false;
 
+    public string type;
+
     void Update()
     {
         if (isDestroyed) return;
@@ -34,5 +36,15 @@ public class MonsterSpawner : MonoBehaviour
     public void DestroySpawner()
     {
         isDestroyed = true;
+
+        if(type == "1")
+        {
+            WaveManager.Instance.stopType1Wave = true; // Stop type 1 wave
+        }
+        else if (type == "2")
+        {
+            WaveManager.Instance.stopType2Wave = true; // Stop type 2 wave
+        }
+
     }
 }

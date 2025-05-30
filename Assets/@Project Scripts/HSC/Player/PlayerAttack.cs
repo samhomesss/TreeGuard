@@ -95,6 +95,7 @@ public class PlayerAttack : MonoBehaviour
                         rotation *= Quaternion.Euler(0, 180, 0);
                     }
                     GameObject effect = Instantiate(skill.SkillEffect, transform.position, rotation);
+                    //effect.GetComponentInChildren<ParticleSystem>().Ro
                     Destroy(effect, skill.EffectDuration); // 이펙트 지속시간 후 제거
                 }
             }

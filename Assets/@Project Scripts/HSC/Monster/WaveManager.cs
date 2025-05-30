@@ -25,18 +25,25 @@ public class WaveManager : MonoBehaviour
 
     public float type1WaveTiming = 30f;
     public Action type1WaveStart;
+    public bool stopType1Wave = false;
 
     public float type2WaveTiming = 50f;
     public Action type2WaveStart;
+    public bool stopType2Wave = false;
 
     void Update()
     {
-        type1WaveTiming -= Time.deltaTime;
-        if (type1WaveTiming <= 0f)
+        if(!stopType1Wave)
         {
-            type1WaveTiming = 30f; // Reset timing
-            type1WaveStart?.Invoke(); // Trigger wave start event
+            type1WaveTiming -= Time.deltaTime;
+            if (type1WaveTiming <= 0f)
+            {
+                type1WaveTiming = 30f; // Reset timing
+                type1WaveStart?.Invoke(); // Trigger wave start event
+            }
         }
+
+        if (stopType2Wave) return; // If type 2 wave is stopped, skip the rest
 
         type2WaveTiming -= Time.deltaTime;
         if (type2WaveTiming <= 0f)

@@ -25,10 +25,28 @@ public class SkiillEquipPlayer : MonoBehaviour
 
     public List<GameObject> projectiles = new List<GameObject>();
 
+    EquipSlot equipSlot;
+
     private void Start()
     {
         Managers.Game.OnEquipedBranch += GetBranchEquipment;
         Managers.Game.OnEquipWeaponAddDataEvent += GetEquipDataAdd;
+        equipSlot = GameObject.FindAnyObjectByType<EquipSlot>();
+    }
+
+    // Todo : 수정해야함.
+    private void Update()
+    {
+        if (equipSlot.IsEmpty)
+        {
+            Weapon.SetActive(false);
+            WeaponCollider.SetActive(false);
+        }
+        else
+        {
+            Weapon.SetActive(true);
+            WeaponCollider.SetActive(true);
+        }
     }
 
     void GetEquipDataAdd(BranchData branchData)
