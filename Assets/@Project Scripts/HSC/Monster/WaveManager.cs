@@ -17,6 +17,12 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        type1WaveStart += ShowWaveUI;
+        type2WaveStart += ShowWaveUI;
+    }
+
     public float type1WaveTiming = 30f;
     public Action type1WaveStart;
 
@@ -38,5 +44,10 @@ public class WaveManager : MonoBehaviour
             type2WaveTiming = 50f; // Reset timing
             type2WaveStart?.Invoke(); // Trigger wave start event
         }
+    }
+
+    public void ShowWaveUI()
+    {
+        Managers.Game.WaveComming();
     }
 }

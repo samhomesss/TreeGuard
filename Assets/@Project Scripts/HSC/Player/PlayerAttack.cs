@@ -123,7 +123,13 @@ public class PlayerAttack : MonoBehaviour
 
         // 공격 반동 (앞으로 쏠리는 반동 말하는거임)
         attackPushForceDir = PlayerController.Instance.moveDir;
+
         attackPushForce = currentWeapon.TotalAttackPushForce;
+        if(attackPushForce < 7f)
+        {
+            // 공격 반동 힘이 너무 작으면 기본값으로 설정
+            attackPushForce = 7f;
+        }
 
         if (attackPushForceDir == Vector2.zero)
         {

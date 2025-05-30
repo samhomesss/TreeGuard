@@ -28,6 +28,49 @@ public class SkiillEquipPlayer : MonoBehaviour
     private void Start()
     {
         Managers.Game.OnEquipedBranch += GetBranchEquipment;
+        Managers.Game.OnEquipWeaponAddDataEvent += GetEquipDataAdd;
+    }
+
+    void GetEquipDataAdd(BranchData branchData)
+    {
+        // Graft List
+        {
+            this.branchData.Add(branchData);
+
+            foreach (var item in branchData.childrenBranch)
+            {
+                if (item != null && item.isOpen)
+                {
+                    this.branchData.Add(item);
+                }
+            }
+        }
+
+        //Branch Skill List
+        {
+            foreach (var item in branchData.branchSkill)
+            {
+                skillData.Add(item);
+            }
+
+            foreach (var item in branchData.childrenBranch)
+            {
+                if (item != null && item.isOpen)
+                {
+                    foreach (var items in item.branchSkill)
+                    {
+                        skillData.Add(items);
+                    }
+                }
+            }
+        }
+
+        CalculateTotalDamage();
+        CheckSpecialAttack();
+        CheckElementalSkills();
+        CalculateTotalRange();
+        CalculateTotalAttackPushForce();
+        CheckProjectiles();
     }
 
     void GetBranchEquipment(List<BranchData> branchDatas, List<SkillData> skillDatas)

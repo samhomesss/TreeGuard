@@ -38,12 +38,13 @@ public class MonsterHP : MonoBehaviour
             Projectile projectile = collision.GetComponent<Projectile>();
             if (projectile != null)
             {
-                TakeDamage(projectile.damage, Color.white);
+                TakeDamage(projectile.damage, Color.yellow);
             }
         }
         else if (collision.CompareTag("PlayerAttack"))
         {
             TakeAttack();
+            Debug.Log("몬스터가 공격을 받았습니다.");
             // 공격 콜라이더 비활성화 (중첩딜 방지)
             //collision.gameObject.SetActive(false);
         }

@@ -20,6 +20,6 @@ MonoBehaviour:
   Damage: 0
   SkillEffect: {fileID: 4659261221767830060, guid: 90ed22e0fed498d428a154790b630ae9, type: 3}
   EffectDuration: 0.2
-  AttackPushForce: 0
+  AttackPushForce: 80
   Invincible: 1
   Projectile: {fileID: 0}
