@@ -12,12 +12,14 @@ public class UI_SkillInfo : UI_Scene
         SkillRangeText,
         SkillDamageText,
         SkillSpecialText,
+        SkillEffectText,
     }
 
     TMP_Text _skillTypeText;
     TMP_Text _skillRangeText;
     TMP_Text _skillDamageText;
     TMP_Text _skillSpecialText;
+    TMP_Text _skillEffectText;
 
     public override bool Init()
     {
@@ -30,7 +32,7 @@ public class UI_SkillInfo : UI_Scene
         _skillRangeText = GetText((int)Texts.SkillRangeText);
         _skillSpecialText = GetText((int)Texts.SkillSpecialText);
         _skillDamageText = GetText((int)Texts.SkillDamageText);
-
+        _skillEffectText = GetText((int)Texts.SkillEffectText);
         return true;
     }
 
@@ -53,7 +55,27 @@ public class UI_SkillInfo : UI_Scene
             _skillTypeText.text = "속성 없음";
         }
 
-        _skillRangeText.text = "공격 사거리 + " + data.Range;
+        if (data.Fire && data.SkillEffect != null)
+        {
+            _skillEffectText.text = "스킬 : 불씨베기 해금";
+        }
+        else if (data.Ice && data.SkillEffect != null )
+        {
+            _skillEffectText.text = "스킬 : 아이스슬레쉬 해금";
+        }
+        else if(data.Fire && data.SkillEffect != null && data.Invincible)
+        {
+            _skillEffectText.text = "스킬 : 동영걷기";
+        }
+        else if (data.Ice && data.Projectile != null)
+        {
+            _skillEffectText.text = "스킬 : 아이스크림 던지기 해금";
+        }
+        else
+        {
+            _skillEffectText.text = "해금 스킬 없음";
+        }
+            _skillRangeText.text = "공격 사거리 + " + data.Range;
         _skillDamageText.text = "무기 데미지 + " + data.Damage;
 
         if (data.Special)
