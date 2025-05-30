@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -16,38 +16,49 @@ public class SkillTreeGrowthManager : MonoBehaviour
 
     private void GrowOneBranch()
     {
-        // ¸ðµç SkillTreeBranch ¿ÀºêÁ§Æ® Å½»ö
         SkillTreeBranch[] allBranches = FindObjectsOfType<SkillTreeBranch>();
 
-        List<SkillTreeBranch> growthCandidates = new List<SkillTreeBranch>();
+        List<SkillTreeBranch> normalCandidates = new List<SkillTreeBranch>();
+        List<SkillTreeBranch> cutCandidates = new List<SkillTreeBranch>();
 
         foreach (var branch in allBranches)
         {
-            // ¾ÆÁ÷ ¿­¸®Áö ¾ÊÀº ³ëµå¸¸ ´ë»óÀ¸·Î ÇÔ
-            if (branch.BranchData.isOpen)
+            var bd = branch.BranchData;
+
+            // ì—´ë ¤ ìžˆëŠ” ê°€ì§€ëŠ” ìŠ¤í‚µ
+            if (bd.isOpen)
                 continue;
 
-            // ÀÌ ³ëµåÀÇ ºÎ¸ð°¡ Á¸ÀçÇÏ°í, ºÎ¸ð°¡ ¿­·ÁÀÖ¾î¾ß ÇÔ
-            if (branch.BranchData.parentBranch != null &&
-                branch.BranchData.parentBranch.isOpen)
-            {
-                growthCandidates.Add(branch);
-            }
+            // ë¶€ëª¨ê°€ ì—´ë ¤ ìžˆì§€ ì•Šìœ¼ë©´ ìŠ¤í‚µ
+            if (bd.parentBranch == null || !bd.parentBranch.isOpen)
+                continue;
+
+            if (bd.isCut)
+                cutCandidates.Add(branch);         // âœ‚ï¸ ê°€ì§€ì¹˜ê¸° ëœ ì• 
+            else
+                normalCandidates.Add(branch);      // ðŸŒ± ì¼ë°˜ ê°€ì§€
         }
 
-        if (growthCandidates.Count == 0)
+        SkillTreeBranch selected = null;
+
+        if (normalCandidates.Count > 0)
+        {
+            selected = normalCandidates[Random.Range(0, normalCandidates.Count)];
+        }
+        else if (cutCandidates.Count > 0)
+        {
+            selected = cutCandidates[Random.Range(0, cutCandidates.Count)];
+        }
+
+        if (selected != null)
+        {
+            selected.BranchData.isOpen = true;
+            selected.EnableCanvas();
+            Debug.Log($"[SkillTree] Grown: {selected.BranchData.name}");
+        }
+        else
         {
             Debug.Log("[SkillTree] No branches to grow.");
-            return;
         }
-
-        // ¹«ÀÛÀ§·Î ÇÏ³ª ¼±ÅÃ
-        SkillTreeBranch chosen = growthCandidates[Random.Range(0, growthCandidates.Count)];
-
-        // ¿­±â
-        chosen.BranchData.isOpen = true;
-        chosen.EnableCanvas();
-
-        Debug.Log($"[SkillTree] Grown: {chosen.BranchData.name}");
     }
 }
