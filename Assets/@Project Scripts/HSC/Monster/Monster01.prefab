@@ -206,6 +206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalMoveSpeed: 5
   moveSpeed: 5
-  detectionRange: 15
-  damage: 10
+  detectionRange: 10
+  damage: 5
   monsterType: 1

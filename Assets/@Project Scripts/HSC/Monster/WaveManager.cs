@@ -21,13 +21,15 @@ public class WaveManager : MonoBehaviour
     {
         type1WaveStart += ShowWaveUI;
         type2WaveStart += ShowWaveUI;
+
+        type1WaveTiming -= 50f;
     }
 
-    public float type1WaveTiming = 30f;
+    public float type1WaveTiming;
     public Action type1WaveStart;
     public bool stopType1Wave = false;
 
-    public float type2WaveTiming = 50f;
+    public float type2WaveTiming;
     public Action type2WaveStart;
     public bool stopType2Wave = false;
 
@@ -38,7 +40,7 @@ public class WaveManager : MonoBehaviour
             type1WaveTiming -= Time.deltaTime;
             if (type1WaveTiming <= 0f)
             {
-                type1WaveTiming = 30f; // Reset timing
+                type1WaveTiming = 70f; // Reset timing
                 type1WaveStart?.Invoke(); // Trigger wave start event
             }
         }
@@ -48,7 +50,7 @@ public class WaveManager : MonoBehaviour
         type2WaveTiming -= Time.deltaTime;
         if (type2WaveTiming <= 0f)
         {
-            type2WaveTiming = 50f; // Reset timing
+            type2WaveTiming = 100f; // Reset timing
             type2WaveStart?.Invoke(); // Trigger wave start event
         }
     }

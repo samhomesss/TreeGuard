@@ -12,6 +12,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float attackPushForce = 7f; // 공격 반동 힘
     [SerializeField] private float specialAttackPushForce = 10f; // 특수 공격 반동 힘
 
+    [SerializeField] Transform weaponTransform; // 무기 위치를 위한 Transform
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -95,6 +97,7 @@ public class PlayerAttack : MonoBehaviour
                         rotation *= Quaternion.Euler(0, 180, 0);
                     }
                     GameObject effect = Instantiate(skill.SkillEffect, transform.position, rotation);
+                    effect.transform.localScale = weaponTransform.localScale; // 무기 크기에 맞춰서 이펙트 크기 조정
                     //effect.GetComponentInChildren<ParticleSystem>().Ro
                     Destroy(effect, skill.EffectDuration); // 이펙트 지속시간 후 제거
                 }

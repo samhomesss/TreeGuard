@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5cda4ac7c25c74abb40ca6e6c0f281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
+  maxHP: 200
   currentHP: 0
   currentIceStacks: 0
   slowMultipliers:
@@ -204,8 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546385d14f36185408286468049422bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalMoveSpeed: 5
-  moveSpeed: 5
-  detectionRange: 15
-  damage: 10
+  originalMoveSpeed: 8
+  moveSpeed: 8
+  detectionRange: 10
+  damage: 5
   monsterType: 2
