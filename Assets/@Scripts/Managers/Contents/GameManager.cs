@@ -55,13 +55,15 @@ public class GameManager
     public event Action<BranchData> OnBranchGetInvenEvent; // 가지치기 했을때 해당 스킬들을 인벤토리에 넣기전 데이터를 정리 하는 이벤트 
     public event Action<List<BranchData>, List<SkillData>> OnGetBranchInventory; // 정말로 인벤토리에 넣어주는 이벤트 
     public event Action<List<BranchData>, List<SkillData>> OnEquipedBranch; // 장비 장착  
+    public event Action<int> OnGetItem1Event; // 아이템 1번 획득 이벤트 TODO: 추후 수정
+    public event Action<int> OnGetItem2Event; // 아이템 2번 획득 이벤트 TODO: 추후 수정
+    public event Action<int> OnPlayerHpChangeEvent; // PlayerHP 변경 이벤트 TODO: 추후 수정
     //public event Action<List<BranchData>, List<SkillData>> OnEquipTOGOInventory; // 장비에서 branch로 
     public event Action OnGiveWaterEvent;
     public void UISkillTreeCanvas()
     {
         OnUISkillTreeCanvasEvent?.Invoke();
     }
-
     public void UIOtherTreeCanvas()
     {
         OnUIOtherTreeCanvasEvent?.Invoke();
@@ -82,16 +84,28 @@ public class GameManager
     {
         OnEquipedBranch?.Invoke(branchDatas, skillDatas);
     }
-
     public void GiveWater()
     {
         OnGiveWaterEvent?.Invoke();
     }
 
-   // public void EquipTOGOInventory(List<BranchData> branchDatas, List<SkillData> skillDatas)
-   // {
-   //     OnEquipTOGOInventory?.Invoke(branchDatas, skillDatas);
-   // }
+    public void GetItem1(int itemcount)
+    {
+        OnGetItem1Event?.Invoke(itemcount);
+    }
+    public void GetItem2(int itemcount)
+    {
+        OnGetItem2Event?.Invoke(itemcount);
+    }
+    public void PlayerHpChange(int hpchange)
+    {
+        OnPlayerHpChangeEvent?.Invoke(hpchange);
+    }
+
+    // public void EquipTOGOInventory(List<BranchData> branchDatas, List<SkillData> skillDatas)
+    // {
+    //     OnEquipTOGOInventory?.Invoke(branchDatas, skillDatas);
+    // }
     #endregion
 
     public void DisConnect()

@@ -399,6 +399,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1889721134558840185, guid: d5f1c0a46e00c8441ae7c31c551ec0b1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5221276902806934824, guid: d5f1c0a46e00c8441ae7c31c551ec0b1, type: 3}
       propertyPath: m_Name
       value: UI_OtherGraftButton

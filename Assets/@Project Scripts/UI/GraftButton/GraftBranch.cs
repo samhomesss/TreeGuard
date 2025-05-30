@@ -24,7 +24,23 @@ public class GraftBranch : MonoBehaviour
 
         if (_uiSkillTree.enabled)
         {
+            if (_uiSkillTree.enabled)
+            {
+                SkillTreeBranch[] allBranches = FindObjectsOfType<SkillTreeBranch>();
 
+                foreach (var graftedBranch in slot.branchData)
+                {
+                    foreach (var treeBranch in allBranches)
+                    {
+                        if (treeBranch.BranchData == graftedBranch)
+                        {
+                            treeBranch.EnableCanvas(); // 이미 있는 함수 사용
+                            treeBranch.BranchData.isOpen = true; // 논리상으로도 열어줌 (성장 구조 일관성 위해)
+                            Debug.Log($"[Graft] UI 노드 활성화: {graftedBranch.name}");
+                        }
+                    }
+                }
+            }
         }
 
         if (_uiOtherTree.enabled)
