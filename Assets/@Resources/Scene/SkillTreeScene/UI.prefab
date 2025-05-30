@@ -3246,6 +3246,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 7152360520325232311}
+  _canvas: {fileID: 0}
+  _selectCanvas: {fileID: 0}
 --- !u!114 &8606354785588575285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8016,7 +8018,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: -1
@@ -11622,10 +11624,10 @@ Transform:
   - {fileID: 3022617929903945020}
   - {fileID: 490306652236552816}
   - {fileID: 300332543180471259}
+  - {fileID: 2124512634366732311}
   - {fileID: 5432346479965720918}
   - {fileID: 5758191462141511284}
   - {fileID: 2136571280439191340}
-  - {fileID: 2124512634366732311}
   - {fileID: 7497280711120514668}
   - {fileID: 2655834245325271905}
   - {fileID: 6168823936603351929}
@@ -12080,15 +12082,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5786969803424300079, guid: 00cbb8c1cd2dda34286b070440052eb2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5786969803424300079, guid: 00cbb8c1cd2dda34286b070440052eb2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5786969803424300079, guid: 00cbb8c1cd2dda34286b070440052eb2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5786969803424300079, guid: 00cbb8c1cd2dda34286b070440052eb2, type: 3}
       propertyPath: m_AnchoredPosition.x

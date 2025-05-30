@@ -23,6 +23,11 @@ public class UI_GiveWater : UI_Scene
 
     void GiveWaterButtonClick()
     {
+        if (PlayerController.Instance.itemCount[ItemType.Soul] <= 0)
+        {
+            return;
+        }
         Managers.Game.GiveWater();
+        PlayerController.Instance.itemCount[ItemType.Soul]--;
     }
 }
